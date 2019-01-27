@@ -1,14 +1,14 @@
 # predicting-donations
 
 
-#DSC Re-Activation Campaign Project 
+# DSC Re-Activation Campaign Project 
 
 # Project Definition 
 
 
 Using historical data from past reactivation campaigns, we want to predict which donors will be more likely to donate more than 35 € for the DSC re-activation campaign.
 
-* This model will be used to support the decision-making process and answer the following question: 
+This model will be used to support the decision-making process and answer the following question: 
 
 **How many donors  need to be reached to gain the maximum profit?**
 
@@ -17,7 +17,7 @@ Only included data before April 11th, 2013 
 
 Target Period: 11/04/2013 - 15/01/2014
 
-* Variable Creation *
+# Variable Creation 
 
 ## Continuous Variables
 
@@ -34,26 +34,25 @@ Target Period: 11/04/2013 - 15/01/2014
 * Gender: 5 levels: C, F, S, M, U
 * Location: split into 3 Belgian regions based on zipcode
 
- * Flanders
- * Brussels 
- * Wallonia
+  * Flanders
+  * Brussels 
+  * Wallonia
 
 
 # **Model Building**
 
-Target Definition: binary classification 
+Target Definition: Binary classification 
 
 If donated  > 35 € then 1 
 If donated  < 35 € then 0
 
-Train dataset: Campaign 2013
-34,917 observations 
-Target incidence: 0.0059 / (206 targets)
+Train dataset: Campaign 2013 containing 34,917 observations 
 
-Test dataset: Campaign 2014
-25,645 observations
+**Target incidence: 0.0059 / (206 targets)
 
-## **Feature Selection Algorithm**
+Test dataset: Campaign 2014 containing 25,645 observations
+
+## ** Result of Feature Selection Algorithm**
 
 1. Recency
 2. Language 
@@ -71,7 +70,7 @@ Test dataset: Campaign 2014
 14. min_donated
 15. avg_donations
 
-## **Results of AUC **
+## **Results of AUC**
 
 * AUC train: 0.59
 * AUC test: 0.57
@@ -80,7 +79,7 @@ The result of the AUC curve shows that the variable "S" at index 4 is decreasing
 We decided to take out the variables "U", "S","C" (related to the gender category) and rerun the model.
 
   
-## **Optimising the Model – Final Variable Selection **
+## **Optimising the Model – Final Variable Selection**
 
 The number of variables was reduced to 8:
 * The test and train are performing similarly
@@ -89,6 +88,8 @@ The number of variables was reduced to 8:
 There is no overtraining, because the test AUC is slightly higher than the train AUC 
 
 ## **Evaluation of the Final Model**
+
+Final Variables in the order of selection:
 
 1. Rencency  
 2. Language 
@@ -99,7 +100,7 @@ There is no overtraining, because the test AUC is slightly higher than the tra
 7. max_donated
 8. min_donated
 
-The highest significance values are recency p<0.001, language and sum donated  p<0.01, male and numbers of donation p<0.05
+**The highest significance values are recency p<0.001, language and sum donated  p<0.01, male and numbers of donation p<0.05
 
 * The Cumulative Gains curve indicated slightly better performance than random
 * The Lift curve showed better model performance for the test than the target dataset. 
@@ -117,37 +118,37 @@ The highest significance values are recency p<0.001, language and sum donated 
 * Possible reason: too many observations with a low target incidence
 
 
-# ** Interpretation of Variables: **
+# ** Interpretation of Variables:**
 
-**1. Recency **
+# **1. Recency**
 
 * The more time elapsed (recency) between the last donation and start of target period, the less likely the donor will donate
 
-**2. Language **
+# **2. Language**
 
 * If the donor does not speak French, he/she will be more likely to donate 
 
-**3. Gender **
+# **3. Gender**
 
 *  Male donors are more likely to donate 
 
-**4. Number of Donations **
+**4. Number of Donations**
 
 * Donors that donated more than 42 times are less likely to donate 
 
-**5. Maximum Amount Donated **
+**5. Maximum Amount Donated**
 
 * Donors with a maximum amount donated greater than 142€ are less likely to donate again
 
-**6. Sum Amount Donated **
+**6. Sum Amount Donated**
 
 * The largest the sum donated by a donor, the more likely he/she will donate 
 
-**7. Min Amount Donated **
+**7. Min Amount Donated**
 
 * Donors with higher minimum amount donated are more likely to donate 
 
-**8. Region **
+**8. Region**
 
 * Donors from Brussels are less likely to donate 
 
@@ -168,7 +169,7 @@ Need to consider:
 * Expected profits were calculated as a function of percentage of donors selected 
 * Selected the percentage yielding maximum profit
 
-## ** Business Case Solution **
+## ** Business Case Solution**
 
 * DSC will make maximum profit by sending letters to 30% of the candidate donors 
 * Based on our model, maximum profits will be generated (3,126 €) by addressing 30% of the donors.
