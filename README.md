@@ -3,7 +3,7 @@
 
 # DSC Re-Activation Campaign Project 
 
-# Project Definition 
+## Project Definition 
 
 
 Using historical data from past reactivation campaigns, we want to predict which donors will be more likely to donate more than 35 € for the DSC re-activation campaign.
@@ -48,11 +48,11 @@ If donated  < 35 € then 0
 
 Train dataset: Campaign 2013 containing 34,917 observations 
 
-**Target incidence: 0.0059 / (206 targets)
+**Target incidence: 0.0059 / (206 targets)**
 
 Test dataset: Campaign 2014 containing 25,645 observations
 
-## ** Result of Feature Selection Algorithm**
+## Result of Feature Selection Algorithm
 
 1. Recency
 2. Language 
@@ -100,13 +100,13 @@ Final Variables in the order of selection:
 7. max_donated
 8. min_donated
 
-**The highest significance values are recency p<0.001, language and sum donated  p<0.01, male and numbers of donation p<0.05
+**The highest significance values are recency p<0.001, language and sum donated  p<0.01, male and numbers of donation p<0.05**
 
 * The Cumulative Gains curve indicated slightly better performance than random
 * The Lift curve showed better model performance for the test than the target dataset. 
 * This trend is also reflected in AUC curves.  
- * Train Target Incidence:   0.0059
- * Test Target Incidence:    0.0148
+  * Train Target Incidence:   0.0059
+  * Test Target Incidence:    0.0148
 
 * Overall the model would be better if we had stratified the target in order to include equal percentages of targets  in both train and target data sets.
 
@@ -118,17 +118,17 @@ Final Variables in the order of selection:
 * Possible reason: too many observations with a low target incidence
 
 
-# ** Interpretation of Variables:**
+**Interpretation of Variables:**
 
-# **1. Recency**
+**1. Recency**
 
 * The more time elapsed (recency) between the last donation and start of target period, the less likely the donor will donate
 
-# **2. Language**
+**2. Language**
 
 * If the donor does not speak French, he/she will be more likely to donate 
 
-# **3. Gender**
+**3. Gender**
 
 *  Male donors are more likely to donate 
 
@@ -152,8 +152,9 @@ Final Variables in the order of selection:
 
 * Donors from Brussels are less likely to donate 
 
-# * What percentage of the donor population should we reach to get the maximum possible profit from our reactivation campaigns?
+# Business Case
 
+* What percentage of the donor population should we reach to get the maximum possible profit from our reactivation campaigns?
 
 Need to consider:
 
@@ -169,7 +170,7 @@ Need to consider:
 * Expected profits were calculated as a function of percentage of donors selected 
 * Selected the percentage yielding maximum profit
 
-## ** Business Case Solution**
+## **Business Case Solution**
 
 * DSC will make maximum profit by sending letters to 30% of the candidate donors 
 * Based on our model, maximum profits will be generated (3,126 €) by addressing 30% of the donors.
